@@ -44,12 +44,13 @@ systemctl start nginx &>>$LOGS_FILE_NAME
 VALIDATE $? "Starting Nginx"
 
 rm -rf /usr/share/nginx/html/* &>>$LOGS_FILE_NAME
-VALIDATE $? "Remove HTML files"
+VALIDATE $? "Remove existing version of code"
 
 curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOGS_FILE_NAME
 VALIDATE $? "Downloading frontend"
 
 cd /usr/share/nginx/html
+VALIDATE $? "Moving to HTML directory"
 
 unzip /tmp/frontend.zip &>>$LOGS_FILE_NAME
 VALIDATE $? "Unzip frontend"
