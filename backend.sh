@@ -83,7 +83,7 @@ VALIDATE $? "Enable backend"
 dnf install mysql -y &>>$LOGS_FILE_NAME
 VALIDATE $? "Installing MySQL"
 
-mysql -h db.harvargurram.onlin -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOGS_FILE_NAME
+mysql -h db.harvargurram.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOGS_FILE_NAME
 VALIDATE $? "Load backend schema"
 
 systemctl restart backend &>>$LOGS_FILE_NAME
