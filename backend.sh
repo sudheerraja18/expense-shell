@@ -49,7 +49,7 @@ then
     useradd expense &>>$LOGS_FILE_NAME
     VALIDATE $? "Adding expense user"
 else
-    echo "User expence already added"
+    echo -e "expense user already exists .....$Y SKIPPING $N"
 fi
 
 mkdir -p /app 
@@ -77,10 +77,10 @@ mysql -h db.harvargurram.online -uroot -pExpenseApp@1 < /app/schema/backend.sql 
 VALIDATE $? "Setting up trnsactions schema and tables"
 
 systemctl daemon-reload &>>$LOGS_FILE_NAME
-VALIDATE $? "Reload daemon"
+VALIDATE $? "Daemon Reload"
 
 systemctl enable backend &>>$LOGS_FILE_NAME
-VALIDATE $? "Enable backend"
+VALIDATE $? "Enabling backend"
 
 systemctl restart backend &>>$LOGS_FILE_NAME
-VALIDATE $? "Restart backend"
+VALIDATE $? "Restarting backend"
