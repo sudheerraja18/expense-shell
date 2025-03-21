@@ -52,13 +52,15 @@ else
     echo "User expence already added"
 fi
 
-mkdir -p /app &>>$LOGS_FILE_NAME
+mkdir -p /app 
 VALIDATE $? "Create app directory"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGS_FILE_NAME
 VALIDATE $? "Download the application"
 
 cd /app
+
+rm -rf /app/*
 
 unzip /tmp/backend.zip &>>$LOGS_FILE_NAME
 VALIDATE $? "Unzip the backend application"
