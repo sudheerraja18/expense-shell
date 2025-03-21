@@ -43,7 +43,7 @@ VALIDATE $? "Enabling MySQL Server"
 systemctl start mysqld &>>$LOGS_FILE_NAME
 VALIDATE $? "Starting MySQL Server"
 
-mysql -h db.harvargurram.online -u root -pExpenseApp@1 -e 'show databases;'
+mysql -h db.harvargurram.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOGS_FILE_NAME
 if [ $? -ne 0 ]
 then
     echo "MySQL root password not setup" &>>$LOGS_FILE_NAME
