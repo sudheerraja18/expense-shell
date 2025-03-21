@@ -43,7 +43,7 @@ VALIDATE $? "Enable NodeJS"
 dnf install nodejs -y &>>$LOGS_FILE_NAME
 VALIDATE $? "Install NodeJS"
 
-id expense
+id expense &>>$LOGS_FILE_NAME
 if [ $? -ne 0 ]
 then
     useradd expense &>>$LOGS_FILE_NAME
@@ -52,7 +52,7 @@ else
     echo "User expence already added"
 fi
 
-mkdir /app &>>$LOGS_FILE_NAME
+mkdir -p /app &>>$LOGS_FILE_NAME
 VALIDATE $? "Create app directory"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGS_FILE_NAME
